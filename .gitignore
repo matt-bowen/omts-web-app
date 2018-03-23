@@ -1,0 +1,6 @@
+#match images
+*.jpeg
+*.png
+*.gif
+*.tiff
+
