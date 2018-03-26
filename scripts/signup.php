@@ -40,7 +40,8 @@
             if ($conn->connect_error) {
                 die("Insertion failed: " . $conn->connect_error);
             } 
-            echo "<p>Data (possibly) inserted: " . mysqli_error($conn) . "</p>";
+            //echo "<p>Data (possibly) inserted: " . mysqli_error($conn) . "</p>";
+            echo "<p>Thank you for signing up. Click <a href='../index.html'>here</a> to return to the home page.</p>";
         }
     
     
