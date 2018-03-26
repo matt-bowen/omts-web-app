@@ -7,20 +7,125 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="styles/bootstrap.min.css">
+        <!-- other css -->
+
         <!-- icon -->
         <link rel="shortcut icon" href="images/favicon.ico">
 
         <title>OMTS Customer Signup</title>
     </head>
     <body>
-        <h1>Sign up form</h1>
-        <form action="scripts/signup.php" method="POST">
-            First name:<br>
-            <input type="text" name="firstname"><br>
-            Last name:<br>
-            <input type="text" name="lastname">
-            <input type="submit" name="submitbutton">
-        </form>
+        <div class="container">
+            <h1>Sign up form</h1>
+        </div>
+        <div class=container>
+            <div class="form-group">
+                <form action="scripts/signup.php" method="POST">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="form_firstname">First name:</label>
+                            <input type="text" class="form-control" id="form_firstname" name="firstname" required="true" placeholder="First name">
+                            <small id="firstnameRequired" class="form-text text-muted">Required</small>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="form_lastname">Last name:</label>
+                            <input type="text" class="form-control" id="form_lastname" name="lastname" required="true" placeholder="Last name">
+                            <small id="lastnameRequired" class="form-text text-muted">Required</small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="form_phone">Telephone:</label>
+                            <input type="tel" class="form-control bfh-phone" id="form_phone" name="phone" placeholder="1-(555)-555-5555">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="form_email">Email:</label>
+                            <input type="email" class="form-control" id="form_email" name="email" required="true" placeholder="name@email.com">
+                            <small id="emailRequired" class="form-text text-muted">Required</small>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="form_password">Choose a password:</label>
+                            <input type="password" class="form-control" id="form_password" name="password" required="true" placeholder="Password">
+                            <small id="passwordRequired" class="form-text text-muted">We'll never share your email or password with anyone.</small>
+                        </div>
+                    </div>
+                    <div class="form"><p>Address:</p></div>
+                    <div class="form-row">
+                        <div class="form-group col-4">
+                            <label for="form_streetnum">Street Number:</label>
+                            <input type="text" class="form-control" id="form_streetnum" name="streetnum" placeholder="1">
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="form_streetname">Street Name:</label>
+                            <input type="text" class="form-control" id="form_streetname" name="streetname" placeholder="Pleasant St.">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-4">
+                            <label for="form_city">City:</label>
+                            <input type="text" class="form-control" id="form_city" name="city" placeholder="Pleasantville">
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="form_province">Province:</label>
+                            <input type="text" class="form-control" id="form_province" name="province" placeholder="Pleasantario">
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="form_postal">Postal Code:</label>
+                            <input type="text" class="form-control" id="form_postal" name="postal" placeholder="1A1 A1A">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label class="col-sm-2 control-label" for="form_cc">Credit Card:</label>
+                        <div class="form-group col-9">
+                            <input type="text" class="form-control" id="form_cc" name="cc" placeholder="Credit Card Number" required="true">
+                            <small id="ccRequired" class="form-text text-muted">Required</small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label class="col-sm-2 control-label">Expiry Date:</label>
+                        <div class="form-group col-3">
+                            <select class="form-control" name="ccexp_month" required="true">
+                                <option value="01">Jan (01)</option>
+                                <option value="02">Feb (02)</option>
+                                <option value="03">Mar (03)</option>
+                                <option value="04">Apr (04)</option>
+                                <option value="05">May (05)</option>
+                                <option value="06">June (06)</option>
+                                <option value="07">July (07)</option>
+                                <option value="08">Aug (08)</option>
+                                <option value="09">Sep (09)</option>
+                                <option value="10">Oct (10)</option>
+                                <option value="11">Nov (11)</option>
+                                <option value="12">Dec (12)</option>
+                            </select>
+                            <small id="ccexpRequired" class="form-text text-muted">Required</small>
+                        </div>
+                        <div class="form-group col-3">
+                            <select class="form-control" name="ccexp_year" required="true">
+                                <option value="18">2018</option>
+                                <option value="19">2019</option>
+                                <option value="20">2020</option>
+                                <option value="21">2021</option>
+                                <option value="22">2022</option>
+                                <option value="23">2023</option>
+                                <option value="24">2024</option>
+                                <option value="25">2025</option>
+                                <option value="26">2026</option>
+                                <option value="27">2027</option>
+                                <option value="28">2028</option>
+                            </select>
+                            <small id="ccexpRequired" class="form-text text-muted">Required</small>
+                        </div>
+
+                    </div>
+
+
+                    <input type="submit" class="btn btn-primary" name="submitbutton">
+                </form>
+            </div>
+        </div>
       
       
       
