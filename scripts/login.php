@@ -9,7 +9,7 @@
     <!-- icon -->
     <link rel="shortcut icon" href="../images/favicon.ico">
 
-    <title>Signup Landing Page</title>
+    <title>Login Landing Page</title>
 </head>
 <body>
 <?php
@@ -23,8 +23,6 @@
     } */
 	//phpinfo();
     if (isset($_POST['submitbutton'])) {
-        $cc_exp = $_POST['ccexp_month'] . $_POST['ccexp_year'];
-        
         $servername = "localhost";
         $username = "root";
         $password = "";
@@ -43,28 +41,25 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         } */
-        
-
-        $sql = "SELECT acct_num FROM Customer ORDER BY acct_num DESC LIMIT 1";
-        $result = mysqli_query($conn, $sql);
-        
-        //$sql = "INSERT INTO Customer (acct_num, f_name, l_name) VALUES ('1002','matt','bowen')";
-        //mysqli_query($conn, $sql);
-        //echo "Error :" . mysqli_error($conn);
-        
-        try {
-            $row = mysqli_fetch_row($result);
-            $sql = "INSERT INTO Customer VALUES ($row[0]+1, '$_POST[password]', '$_POST[firstname]', '$_POST[lastname]', '$_POST[streetnum]', '$_POST[streetname]', '$_POST[city]', '$_POST[province]', '$_POST[postal]', '$_POST[phone]', '$_POST[email]', '$_POST[cc]', $cc_exp)";
-            mysqli_query($conn, $sql);
-            //if ($conn->connect_error) {
-                //die("Insertion failed: " . $conn->connect_error);
-            //} 
-            //echo "<p>Data (possibly) inserted: " . mysqli_error($conn) . "</p>";
-            echo "<p>Thank you for signing up. Click <a href='../index.html'>here</a> to return to the home page.</p>";
-        } catch (Exception $e) {
-            //$sql = "INSERT INTO customer (acct_num, f_name, l_name, street_num, street_name, city, prov, postal, phone_num, email, password, cc_num, cc_exp) VALUES ($row[0]+1, '$_POST[firstname]', '$_POST[lastname]', '$_POST[streetnum]', '$_POST[streetname]', '$_POST[city]', '$_POST[province]', '$_POST[postal]', '$_POST[phone]', '$_POST[email]', '$_POST[password]', '$_POST[cc]', $cc_exp)";
-            echo "<p>At this time we could not sign you up. Click <a href='../index.html'>here</a> to return to the home page.</p>";
-        } 
+        if ($_POST['email'] == "admin@omts.com" and $_POST['password'] == "admin") {
+            header('Location: ../admin.html');
+            exit;
+        } else {
+            $sql = "SELECT * FROM Customer WHERE email = '$_POST[email]' and password = '$_POST[password]' LIMIT 1";
+            if ($result = mysqli_query($conn, $sql) and mysqli_num_rows($result) == 1) {
+                $row = mysqli_fetch_assoc($result);
+                session_start();
+                $_SESSION['userdata'] = $row;
+                header('Location: ../user.php');
+                exit();
+                //echo $_SESSION['userdata']['street_num'] . " " . $row['street_name'];
+            } else {
+                session_start();
+                $_SESSION['loginsuccess'] = 'false';
+                header('Location: ../login.html');
+                exit();
+            }
+        }
     
     
     
