@@ -10,11 +10,11 @@
         <!-- icon -->
         <link rel="shortcut icon" href="images/favicon.ico">
 
-        <title>User Portal</title>
+        <title>Admin Portal</title>
     </head>
     <body>
         <div class="container">
-            <h1>OMTS User  Portal</h1>
+            <h1>Here are the movies playing at:<?php echo $_POST['chosen_complex']; ?></h1>
         </div>
         <div class="container">
             <?php
@@ -34,54 +34,13 @@
                 } catch (Exception $e) { // Check connection
                     echo "Connection Failed";
                 }    
-                $sql = "SELECT * FROM Complex";
+                
                 //$sql = "SELECT Complex.*, Start_Dates.date AS start_date, End_Dates.date as end_date, Start_Dates.movie_title FROM Complex, Start_Dates, End_Dates WHERE ((name = Start_Dates.complex_name AND name = End_Dates.complex_name) AND Start_Dates.movie_title = End_Dates.movie_title)";
                 $result = mysqli_query($conn, $sql);
             
                 while ($row = mysqli_fetch_assoc($result)) {
             ?>
         </div>
-        <div class="container">
-            <div class="card-deck">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>
-                            <?php
-                                echo "$row[name]";
-                            ?>
-                        </h4>
-                    </div>    
-                    <div class="card-body row">
-                        <div class="container col-6">
-                            <?php
-                                echo "$row[street_num]" . " " . "$row[street_name]<br>";
-                                echo "$row[city]" . ", " . "$row[prov]<br>";
-                                echo "$row[postal]<br>";
-                                echo "$row[phone_num]<br>";
-                            ?>
-                        </div>
-                        <div class="container col-6">
-                            <?php
-                                //$_SESSION['chosen_complex'] = $row['name'];
-
-                                //echo <button id="$row[name]" type="button" class="btn btn-primary btn" value="View Showings" onclick="myRedirect(this.showings)"
-                                //"<input type='submit' class='btn btn-primary' name='chosen_complex' value='$row[name]'>".
-
-                                echo    "<form action='movies.php' method='POST'>".
-                                        "<button class='btn btn-primary' name='chosen_complex' value=$row[name]>View Showings</button>".
-                                        "</form>";
-                            ?>
-                        </div>
-                    </div>
-                </div>
-                
-                
-            </div>
-            <?php
-                }
-            ?>
-        </div>
-        
       
       
       
