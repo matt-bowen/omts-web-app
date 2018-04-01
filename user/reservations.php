@@ -16,7 +16,7 @@
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
             <h5 class="my-0 mr-md-auto font-weight-normal"><a href="../index.html">Online Movie Ticket System</a></h5>
             <nav class="my-2 my-md-0 mr-md-3">
-                <a class="p-2 text-dark" href="../user.php">User Portal</a>
+                <a class="p-2 text-dark" href="user.php">User Portal</a>
                 <a class="p-2 text-dark" href="profile.php">Profile</a>
             </nav>
             <!---<a class="btn btn-outline-primary" href="#">Sign up</a>--->
@@ -43,7 +43,7 @@
                 $result = mysqli_query($conn, $sql);
                 echo mysqli_error($conn);
                 if (mysqli_num_rows($result)==0) {
-                    echo "<p>No current reservations. Click <a href='../user.php'>here</a> to view available movies.</p>";
+                    echo "<p>No current reservations. Click <a href='user.php'>here</a> to view available movies.</p>";
                 } else {
                     while ($row = mysqli_fetch_assoc($result)) {
             ?>

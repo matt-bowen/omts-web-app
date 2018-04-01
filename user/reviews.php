@@ -14,16 +14,17 @@
     </head>
     <body>
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-            <h5 class="my-0 mr-md-auto font-weight-normal"><a href="index.html">Online Movie Ticket System</a></h5>
+            <h5 class="my-0 mr-md-auto font-weight-normal"><a href="../index.html">Online Movie Ticket System</a></h5>
             <nav class="my-2 my-md-0 mr-md-3">
                 <a class="p-2 text-dark" href="user.php">User Portal</a>
-                <a class="p-2 text-dark" href="user/reservations.php">Reservations</a>
-                <a class="p-2 text-dark" href="user/profile.php">Profile</a>
+                <a class="p-2 text-dark" href="reservations.php">Reservations</a>
+                <a class="p-2 text-dark" href="profile.php">Profile</a>
             </nav>
             <!---<a class="btn btn-outline-primary" href="#">Sign up</a>--->
         </div>
         <div class="container">
             <?php
+                if (isset($_POST['go_to_reviews'])) {
                 echo "<h1>Reviews for: $_POST[go_to_reviews]</h1>";
             
                 $servername = "localhost";
@@ -38,7 +39,7 @@
                 } catch (Exception $e) { // Check connection
                     echo "Connection Failed";
                 }
-                $sql = "SELECT * FROM Reviews";
+                $sql = "SELECT * FROM Reviews WHERE movie_title = '$_POST[go_to_reviews]'";
                 $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
             ?>
@@ -56,13 +57,17 @@
                 </div>
             </div>
             <?php
-                } //end loop over reviews
+                }} else { //end loop over reviews
+                    header("Location:user.php");
+                    exit();
+                }
             ?>
             <div class="container-fluid form-group">
                 <h4>Add a Review:</h4>
-                <form action="scripts/review-added.php" method="POST">
-                    <textarea class="form-control" rows="5" name="input-review"></textarea>
-                    <input type="submit" class="btn-primary btn">
+                <form action="../scripts/reviews-added.php" method="POST">
+                    <textarea class="form-control" rows="5" name="input_review"></textarea>
+                    <input type="submit" class="btn-primary btn" name="reviewsubmit">
+                    <input type="hidden" name="movie_title" value="<?php echo $_POST['go_to_reviews']; ?>">
                 </form>
             </div>
         </div>

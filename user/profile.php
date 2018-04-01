@@ -47,7 +47,7 @@
         </div>
         <div class=container>
             <div class="form-group">
-                <form action="profile-edit.php" method="POST">
+                <form action="../scripts/profile-edit.php" method="POST">
                  <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="form_firstname">First name:</label>

@@ -6,18 +6,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="styles/bootstrap.min.css">
+        <link rel="stylesheet" href="../styles/bootstrap.min.css">
         <!-- icon -->
-        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="shortcut icon" href="../images/favicon.ico">
 
         <title>User Portal</title>
     </head>
     <body>
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-            <h5 class="my-0 mr-md-auto font-weight-normal"><a href="index.html">Online Movie Ticket System</a></h5>
+            <h5 class="my-0 mr-md-auto font-weight-normal"><a href="../index.html">Online Movie Ticket System</a></h5>
             <nav class="my-2 my-md-0 mr-md-3">
-                <a class="p-2 text-dark" href="user/reservations.php">Reservations</a>
-                <a class="p-2 text-dark" href="user/profile.php">Profile</a>
+                <a class="p-2 text-dark" href="reservations.php">Reservations</a>
+                <a class="p-2 text-dark" href="profile.php">Profile</a>
             </nav>
             <!---<a class="btn btn-outline-primary" href="#">Sign up</a>--->
         </div>

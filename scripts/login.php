@@ -45,7 +45,7 @@
                 $row = mysqli_fetch_assoc($result);
                 session_start();
                 $_SESSION['userdata'] = $row;
-                header('Location: ../user.php');
+                header('Location: ../user/user.php');
                 exit();
             } else {
                 session_start();
