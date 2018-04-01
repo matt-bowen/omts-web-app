@@ -36,11 +36,6 @@
             echo "Connection Failed";
         }    
             
-        
-        /*
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        } */
         if ($_POST['email'] == "admin@omts.com" and $_POST['password'] == "admin") {
             header('Location: ../admin.html');
             exit;
@@ -52,7 +47,6 @@
                 $_SESSION['userdata'] = $row;
                 header('Location: ../user.php');
                 exit();
-                //echo $_SESSION['userdata']['street_num'] . " " . $row['street_name'];
             } else {
                 session_start();
                 $_SESSION['loginsuccess'] = 'false';

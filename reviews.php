@@ -10,12 +10,13 @@
         <!-- icon -->
         <link rel="shortcut icon" href="images/favicon.ico">
 
-        <title>User Portal</title>
+        <title>Reviews</title>
     </head>
     <body>
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
             <h5 class="my-0 mr-md-auto font-weight-normal"><a href="index.html">Online Movie Ticket System</a></h5>
             <nav class="my-2 my-md-0 mr-md-3">
+                <a class="p-2 text-dark" href="user.php">User Portal</a>
                 <a class="p-2 text-dark" href="user/reservations.php">Reservations</a>
                 <a class="p-2 text-dark" href="user/profile.php">Profile</a>
             </nav>
@@ -23,11 +24,7 @@
         </div>
         <div class="container">
             <?php
-                session_start();
-                //echo $_SESSION['chosen_complex'];
-                $userdata = $_SESSION['userdata'];
-                
-                echo "<h2>Welcome, $userdata[f_name]</h2>";
+                echo "<h1>Reviews for: $_POST[go_to_reviews]</h1>";
             
                 $servername = "localhost";
                 $username = "root";
@@ -40,57 +37,28 @@
                     $conn = mysqli_connect($servername, $username, $password, $dbname);
                 } catch (Exception $e) { // Check connection
                     echo "Connection Failed";
-                }    
-                $sql = "SELECT * FROM Complex";
-                //$sql = "SELECT Complex.*, Start_Dates.date AS start_date, End_Dates.date as end_date, Start_Dates.movie_title FROM Complex, Start_Dates, End_Dates WHERE ((name = Start_Dates.complex_name AND name = End_Dates.complex_name) AND Start_Dates.movie_title = End_Dates.movie_title)";
+                }
+                $sql = "SELECT * FROM Reviews";
                 $result = mysqli_query($conn, $sql);
-            
                 while ($row = mysqli_fetch_assoc($result)) {
             ?>
-        </div>
-        <div class="container">
-            <div class="card-deck">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>
-                            <?php
-                                echo "$row[name]";
-                            ?>
-                        </h4>
-                    </div>    
-                    <div class="card-body row">
-                        <div class="container col-6">
-                            <?php
-                                echo "$row[street_num]" . " " . "$row[street_name]<br>";
-                                echo "$row[city]" . ", " . "$row[prov]<br>";
-                                echo "$row[postal]<br>";
-                                echo "$row[phone_num]<br>";
-                            ?>
-                        </div>
-                        <div class="container col-6">
-                            <?php
-                                //$_SESSION['$row[name]'] = true;
-                                //echo $_SESSION['chosen_complex'];
-
-                                //echo <button id="$row[name]" type="button" class="btn btn-primary btn" value="View Showings" onclick="myRedirect(this.showings)"
-                                //"<input type='submit' class='btn btn-primary' name='chosen_complex' value='$row[name]'>".
-                    
-                                echo    "<form action='movies.php' method='POST'>".
-                                        "<button class='btn btn-primary' name='chosen_complex' value='$row[name]'>View Movies</button>".
-                                        "</form>";
-                            ?>
+            <div class="container-fluid">
+                <div class="card-deck d-flex">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>
+                                <?php
+                                    echo $row['review'];
+                                ?>
+                            </p>
                         </div>
                     </div>
                 </div>
-                
-                
             </div>
             <?php
-                }
-                mysqli_close($conn);
+                } //end loop over reviews
             ?>
         </div>
-        
       
       
       
