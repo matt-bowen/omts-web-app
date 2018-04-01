@@ -58,6 +58,13 @@
             <?php
                 } //end loop over reviews
             ?>
+            <div class="container-fluid form-group">
+                <h4>Add a Review:</h4>
+                <form action="scripts/review-added.php" method="POST">
+                    <textarea class="form-control" rows="5" name="input-review"></textarea>
+                    <input type="submit" class="btn-primary btn">
+                </form>
+            </div>
         </div>
       
       
