@@ -45,13 +45,13 @@
                     }
                     $sql = "INSERT INTO Reviews (movie_title, cust_num, review) VALUES ('$_POST[movie_title]', '$userdata[acct_num]', '$_POST[input_review]')";
                     mysqli_query($conn, $sql);
-                    //echo mysqli_error($conn);
+                    echo mysqli_error($conn);
             ?>
             <div>
-                <p>Thank you for submitting a review. To see all reviews, click <a href="../reviews.php">here</a>.</p>
+                <p>Thank you for submitting a review. To see all reviews, click <a href="../user/reviews.php">here</a>.</p>
                 <?php
                 } else {
-                    echo "<p>No review has been submitted. Click <a href='../reviews.php'>here</a> to view reviews.";
+                    echo "<p>No review has been submitted. Click <a href='../user/reviews.php'>here</a> to view reviews.";
                 }
                 ?>
             </div>

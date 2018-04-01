@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="styles/bootstrap.min.css">
+        <link rel="stylesheet" href="../styles/bootstrap.min.css">
         <!-- icon -->
-        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="shortcut icon" href="../images/favicon.ico">
 
         <title>Reviews</title>
     </head>
@@ -69,6 +69,7 @@
                     <input type="submit" class="btn-primary btn" name="reviewsubmit">
                     <input type="hidden" name="movie_title" value="<?php echo $_POST['go_to_reviews']; ?>">
                 </form>
+                <!---<small class="form-text text-muted">Note: You may only submit one review per movie. The first review per movie will be kept.</small>--->
             </div>
         </div>
       
