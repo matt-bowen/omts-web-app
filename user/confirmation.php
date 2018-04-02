@@ -16,7 +16,7 @@
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
             <h5 class="my-0 mr-md-auto font-weight-normal"><a href="../index.html">Online Movie Ticket System</a></h5>
             <nav class="my-2 my-md-0 mr-md-3">
-                <a class="p-2 text-dark" href="../user.php">User Portal</a>
+                <a class="p-2 text-dark" href="user.php">User Portal</a>
                 <a class="p-2 text-dark" href="reservations.php">Reservations</a>
                 <a class="p-2 text-dark" href="profile.php">Profile</a>
             </nav>
@@ -42,22 +42,27 @@
             
                 //print_r($_POST['result']);
                 //print_r($_POST);
-                $showingdata = $_POST['result'];
-                //echo $showingdata[0];
-            
-                $updatesql = "UPDATE Showing SET total_seats_res = total_seats_res + '$_POST[num_seats]' WHERE Showing.start_time = '$showingdata[0]' AND Showing.complex = '$showingdata[1]' AND Showing.th_num = '$showingdata[2]' AND Showing.movie_title = '$showingdata[3]'";
-                mysqli_query($conn, $updatesql);
-                //echo "Error: " . mysqli_error($conn);
-                
-                echo "<h4>Movie: $showingdata[3] </h4>";
-                echo "<h4>Showtime: $showingdata[0] PM </h4>";
-                echo "<h6>Theater Complex: $showingdata[1] </h6>";
-                echo "<h6>Theater Number: $showingdata[2] </h6>";
-                echo "<h6>Seats Reserved: $_POST[num_seats] </h6>";
-            
-                $reservation = "INSERT INTO Reservation VALUES ('$userdata[acct_num]', '$_POST[num_seats]', '$showingdata[0]', '$showingdata[3]', '$showingdata[2]', '$showingdata[1]')";
-                mysqli_query($conn, $reservation);
-                mysqli_error($conn);
+                if (isset($_POST['result'])) {
+                    $showingdata = $_POST['result'];
+                    //echo $showingdata[0];
+
+                    $updatesql = "UPDATE Showing SET total_seats_res = total_seats_res + '$_POST[num_seats]' WHERE Showing.start_time = '$showingdata[0]' AND Showing.complex = '$showingdata[1]' AND Showing.th_num = '$showingdata[2]' AND Showing.movie_title = '$showingdata[3]'";
+                    mysqli_query($conn, $updatesql);
+                    //echo "Error: " . mysqli_error($conn);
+
+                    echo "<h4>Movie: $showingdata[3] </h4>";
+                    echo "<h4>Showtime: $showingdata[0] PM </h4>";
+                    echo "<h6>Theater Complex: $showingdata[1] </h6>";
+                    echo "<h6>Theater Number: $showingdata[2] </h6>";
+                    echo "<h6>Seats Reserved: $_POST[num_seats] </h6>";
+
+                    $reservation = "INSERT INTO Reservation VALUES ('$userdata[acct_num]', '$_POST[num_seats]', '$showingdata[0]', '$showingdata[3]', '$showingdata[2]', '$showingdata[1]')";
+                    mysqli_query($conn, $reservation);
+                    mysqli_error($conn);
+                } else {
+                    header("Location:user.php");
+                    exit();
+                }
                 mysqli_close($conn);
             ?>
             

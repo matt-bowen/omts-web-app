@@ -37,7 +37,7 @@
         }    
             
         if ($_POST['email'] == "admin@omts.com" and $_POST['password'] == "admin") {
-            header('Location: ../admin.html');
+            header('Location: ../admin/admin.php');
             exit;
         } else {
             $sql = "SELECT * FROM Customer WHERE email = '$_POST[email]' and password = '$_POST[password]' LIMIT 1";
